@@ -211,38 +211,6 @@ const AddOptionsPage = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                />
-              </svg>
-              <h3 className="mt-2 text-sm font-medium text-gray-900">No options yet</h3>
-              <p className="mt-1 text-sm text-gray-500">Get started by adding your first option above.</p>
-            </div>
-          ) : (
-            <ul className="space-y-2 max-h-96 overflow-y-auto pr-2 -mr-2">
-              {options.map((option, index) => (
-                <li 
-                  key={option.id} 
-                  className="group flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors duration-150"
-                >
-                  <span className="text-gray-800 flex-1 truncate">
-                    <span className="inline-block w-6 text-sm font-medium text-gray-400 mr-2">
-                      {index + 1}.
-                    </span>
-                    {option.name}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveOption(option.id)}
-                    className="p-1.5 text-gray-400 hover:text-red-500 rounded-full hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-100 transition-colors duration-150"
-                    aria-label={`Remove ${option.name}`}
-                  >
-                    <TrashIcon className="h-4 w-4" />
-                  </button>
                 </li>
               ))}
             </ul>
@@ -257,7 +225,6 @@ const AddOptionsPage = () => {
             className={`btn btn-primary inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 ${
               options.length < 2 ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl'
             }`}
-          >
             <ArrowPathIcon className="-ml-1 mr-2 h-5 w-5" />
             Spin the Wheel
           </button>
@@ -267,10 +234,9 @@ const AddOptionsPage = () => {
               <p className="text-sm text-gray-500">Add at least 2 options to spin the wheel</p>
             </div>
           )}
-        </div>
-      </div>
-    </div>
-  );
+            className={`inline-flex items-center px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform transition-all duration-300 ${
+              options.length >= 2
+                ? 'bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-700 hover:to-violet-600 hover:scale-105 hover:shadow-violet-500/30 focus:outline-none focus:ring-2 focus:ring-violet-500/50'
 };
 
 export default AddOptionsPage;
