@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# Choice Roulette
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern web application that helps users make decisions by randomly selecting options from a customizable wheel. Built with React, Firebase, and modern web technologies.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Interactive spinning wheel with smooth animations
+- Customizable options list
+- Real-time synchronization with Firebase
+- Dark theme with purple/pink accents
+- Responsive design for all devices
+- Error handling and validation
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+- Firebase account (for deployment)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/choice_roulette.git
+cd choice_roulette
+```
 
-### `npm run build`
+2. Install dependencies:
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Run the development server:
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Open [http://localhost:3000](http://localhost:3000) to view the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technology Stack
 
-### `npm run eject`
+### Frontend
+- React 18 with functional components and hooks
+- React Router v6
+- Tailwind CSS
+- Framer Motion for animations
+- Headless UI and Heroicons
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Backend
+- Firebase Firestore
+- Firebase Authentication (coming soon)
+- Firebase Hosting
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+choice_roulette/
+├── /src/
+│   ├── /components/    # Reusable UI components
+│   ├── /pages/         # Page components
+│   ├── /routes/        # Route configurations
+│   └── /context/       # React Context providers
+├── /public/            # Static assets
+├── /docs/              # Project documentation
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Development Roadmap
 
-## Learn More
+### Completed Features
+- Core functionality
+- Responsive design
+- Interactive wheel
+- Firebase integration
+- Real-time updates
+- Dark theme
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Upcoming Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### High Priority
+- User authentication
+- Multiple wheels
+- Wheel customization
+- Enhanced sharing
 
-### Code Splitting
+#### Medium Priority
+- Advanced wheel customization
+- Social media integration
+- Embeddable wheels
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Low Priority
+- Wheel history
+- Templates
+- Keyboard shortcuts
+- Offline support
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-### Advanced Configuration
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Thanks to the React and Firebase communities
+- Special thanks to the Tailwind CSS team
+- Inspired by decision-making tools worldwide
 
-### Deployment
+## Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For support, email support@choiceroulette.com or create an issue in the repository.
 
-### `npm run build` fails to minify
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Project Link: [https://github.com/yourusername/choice_roulette](https://github.com/yourusername/choice_roulette)
