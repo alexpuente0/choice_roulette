@@ -9,6 +9,7 @@ const SpinWheelPage = () => {
   const [isSpinning, setIsSpinning] = useState(false);
   const [winner, setWinner] = useState(null);
   const [rotation, setRotation] = useState(0);
+  const [selectionAngle, setSelectionAngle] = useState(270); // 270 degrees is the selection point
   const [error, setError] = useState('');
   const wheelRef = useRef(null);
   const spinTimeout = useRef(null);
@@ -39,10 +40,10 @@ const SpinWheelPage = () => {
     try {
       // Random rotation between 5-10 full rotations + a random segment
       const spinDegrees = 1800 + Math.floor(Math.random() * 1800);
-      const segmentAngle = 360 / options.length;
+      const segmentAngle = options.length > 0 ? 360 / options.length : 0;
       
       // Calculate the winning segment (90 degrees is up, so we add 90 to the rotation)
-      const normalizedRotation = (rotation + spinDegrees - 75) % 360;
+      const normalizedRotation = (rotation + spinDegrees - 39) % 360;
       // Convert to 0-360 range if negative
       const positiveRotation = normalizedRotation < 0 ? normalizedRotation + 360 : normalizedRotation;
       const winningSegment = Math.floor(positiveRotation / segmentAngle);
@@ -51,6 +52,10 @@ const SpinWheelPage = () => {
       // Update rotation with animation
       setRotation(prev => prev + spinDegrees);
       
+      // Update selection angle
+      setSelectionAngle(270); // Always point to the right (90 degrees) where selection is made
+
+
       // Set the winner after the spin animation completes
       spinTimeout.current = setTimeout(() => {
         setWinner(options[winnerIndex]);
@@ -109,21 +114,39 @@ const SpinWheelPage = () => {
                 textShadow: '0 0 2px rgba(0,0,0,0.5)',
               }}
             >
-              <span 
-                className="absolute text-xs font-medium text-white whitespace-nowrap"
+              <div 
+                className="absolute font-medium text-white"
                 style={{
-                  transform: 'rotate(-90deg) translateY(-50%)',
-                  transformOrigin: 'left center',
-                  left: '10px',
+                  left: '50%',
                   top: '50%',
-                  maxWidth: '100px',
-                  display: 'inline-block',
-                  textOverflow: 'ellipsis',
+                  transform: 'translate(-50%, -50%) rotate(90deg)',
+                  transformOrigin: 'center',
+                  width: '80%',
+                  height: '80%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textShadow: '0 0 3px rgba(0,0,0,0.8)',
                   overflow: 'hidden',
+                  textAlign: 'center',
+                  pointerEvents: 'none'
                 }}
               >
-                {option.name}
-              </span>
+                <div style={{
+                  transform: 'rotate(-90deg)',
+                  transformOrigin: 'center',
+                  whiteSpace: 'nowrap',
+                  fontSize: '0.75rem',
+                  fontWeight: '500',
+                  padding: '5px',
+                  maxWidth: '100%',
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden'
+                }}>
+                  {option.name}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -193,8 +216,19 @@ const SpinWheelPage = () => {
             </div>
           </div>
           
-          {/* Pointer */}
-          <div className="absolute -top-4 left-1/2 -mr-2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white transform -translate-x-1/2"></div>
+          {/* Selection Point Pointer (Yellow) - Points to the right (90 degrees) where selection is made */}
+          <div 
+            className="absolute top-1/2 left-1/2 w-1/2 h-1 origin-left z-20 pointer-events-none"
+            style={{
+              transform: `rotate(${selectionAngle}deg)`
+            }}
+          >
+            <div className="w-1/2 h-1 bg-yellow-500 rounded-full absolute right-0 top-1/2 -translate-y-1/2"></div>
+            <div className="w-4 h-4 bg-yellow-500 rounded-full absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2"></div>
+          </div>
+
+          {/* Main Pointer */}
+          <div className="absolute -top-4 left-1/2 -mr-2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white transform -translate-x-1/2 z-30"></div>
         </div>
 
         {/* Winner Display */}
@@ -207,8 +241,10 @@ const SpinWheelPage = () => {
               className="text-center mb-8"
             >
               <h2 className="text-2xl font-semibold text-white mb-2">Winner!</h2>
-              <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
-                {winner?.name || 'No winner selected'}
+              <div className="bg-gray-800 p-4 rounded-lg mb-4">
+                <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
+                  {winner?.name || 'No winner selected'}
+                </div>
               </div>
             </motion.div>
           )}
