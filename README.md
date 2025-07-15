@@ -116,7 +116,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 For support, email support@choiceroulette.com or create an issue in the repository.
-
-## Contact
-
-Project Link: [https://github.com/yourusername/choice_roulette](https://github.com/yourusername/choice_roulette)
