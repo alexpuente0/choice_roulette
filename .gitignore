@@ -25,3 +25,5 @@ yarn-error.log*
 src/firebase.js
 firebase-debug.log
 /.firebase
+
+.windsurfrules
